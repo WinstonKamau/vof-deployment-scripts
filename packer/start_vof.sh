@@ -69,12 +69,6 @@ stdout_logfile=/var/log/vof/vof.out.log
 user=vof
 EOF
 }
-start-stackdriver(){
-require "google/cloud/debugger"
-
-debugger = Google::Cloud::Debugger.new
-debugger.start
-}
 authenticate_service_account() {
   if gcloud auth activate-service-account --key-file=/home/vof/account.json; then
     echo "Service account authentication successful"
@@ -255,7 +249,6 @@ main() {
   create_log_files
   update_application_yml
   create_secrets_yml
-  start-stackdriver
   create_vof_supervisord_conf
 
   authenticate_service_account
