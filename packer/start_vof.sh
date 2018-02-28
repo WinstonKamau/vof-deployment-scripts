@@ -102,7 +102,7 @@ start_app() {
     sudo -u vof bash -c "cd ${app_root} && env RAILS_ENV=${RAILS_ENV} bundle exec rake db:seed"
   fi
 
-  supervisorctl update && supervisorctl reload
+  supervisorctl reread && supervisorctl update && supervisorctl reload
 }
 
 # this configures the application logging by google-fluentd to send application logs to
