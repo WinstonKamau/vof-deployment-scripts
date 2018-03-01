@@ -27,6 +27,8 @@ gsutil cp gs://${BUCKET_NAME}/ssl/andela_certificate.crt /home/vof/andela_certif
 
 update_application_yml() {
   cat <<EOF >> /home/vof/app/config/application.yml
+ACTION_CABLE_URL: "ws://vof-devops-staging.andela.com/cable"  
+REDIS_URL: 'redis://130.211.86.5:6379'  
 API_URL: 'https://api-staging.andela.com/'
 LOGIN_URL: 'https://api-staging.andela.com/login?redirect_url='
 LOGOUT_URL: 'https://api-staging.andela.com/logout?redirect_url='
